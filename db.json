@@ -1,0 +1,17 @@
+{
+	"posts" : [
+		{"id": 1, "title": "json-server 1", "author": "alam"},
+		{"id": 2, "title": "json-server 2", "author": "alam"},
+		{"id": 3, "title": "json-server 3", "author": "alam"},
+		{"id": 4, "title": "json-server 4", "author": "alam"}
+	],
+
+	"comments" : [
+		{"id": 1, "body": "comment 1", "postId":1},
+		{"id": 2, "body": "comment 2", "postId":2},
+		{"id": 3, "body": "comment 3", "postId":3}
+
+	],
+
+	"profile" : {"name": "Alam"}
+}

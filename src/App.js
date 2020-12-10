@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-
+import axios from 'axios';
 export default class App extends Component {
 
   state = {
     count: this.props.value,
     tags: ['tags1', 'tags2', 'tags3']
   };
+
+  
 
   GetClass(){
     let classes = 'badge m-3 badge-';
@@ -32,6 +34,10 @@ export default class App extends Component {
     return noTags;
   }
 
+
+  
+
+
   render() {
     return (
       <>
@@ -53,4 +59,17 @@ export default class App extends Component {
       </>
     );
   }
+
+  componentDidMount() {
+  //   fetch('http://localhost:3088/posts')
+  //   .then(res=>{
+  //     return res.json()
+  //   })
+  //   .then(myjson=>{
+  //     console.log(myjson)
+  //   })
+  // }
+
+  axios.get('http://localhost:3088/posts').then(res=> console.log(res.data))
+}
 }
