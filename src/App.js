@@ -13,21 +13,13 @@ export default class App extends Component {
   getData(){
     const shoot = this;
        db.ref('/buku/').on('value', items =>{
-        const dataShoot = shoot;
-        items.forEach(items=>{
+          const dataShoot = shoot;
           const bukuUpdate = items.val();
-           const datakey = items.key;
-           // console.log(datakey)
           if(bukuUpdate !== null){
-           dataShoot.setState({
-               buku : [{...bukuUpdate, datakey}]
-             })
-          }
-
-          
-          
-        })
-         
+             dataShoot.setState({
+                 buku : bukuUpdate
+           })
+         }
       })
   }
 
@@ -65,17 +57,17 @@ export default class App extends Component {
 
   publishBuku(data){
     // console.log()
-    const idBuku = data.datakey ;
+    const idBuku = data.id-1 ;
     return db.ref('/buku/').child(`${idBuku}/`).update({ publish: true});
   }
 
   unPublishBuku(data){
-     const idBuku = data.datakey ;
+     const idBuku = data.id-1 ;
       return db.ref('/buku/').child(`${idBuku}/`).update({publish: false});
   }
 
   removeBuku(data){
-     const idBuku = data.datakey ;
+     const idBuku = data.id-1 ;
    if(window.confirm('Yakin Mau hapus')){
      return db.ref('/buku/').child(`${idBuku}/`).remove();
    } else{
@@ -95,13 +87,13 @@ export default class App extends Component {
 
     return buku.length === 0  ? ('Tidak ada buku') : (buku.map(buku=>{
           if(buku.publish === true){
-            return (<li key={buku.datakey} style={{color: 'green'}} >{buku.nama} 
+            return (<li key={buku.id-1} style={{color: 'green'}} >{buku.nama} 
               <button onClick={()=>this.unPublishBuku(buku)}>Unpublish</button>
               <button onClick={()=>this.removeBuku(buku)}>Hapus</button>
               </li>);
             ;
           } else{
-            return (<li style={{color: 'red'}} key={buku.datakey}>{buku.nama} 
+            return (<li style={{color: 'red'}} key={buku.id-1}>{buku.nama} 
                         <button onClick={()=>this.publishBuku(buku)}>Publish</button>
                     </li>);
           }
@@ -114,7 +106,7 @@ export default class App extends Component {
    return buku
    .filter(buku=> buku.publish === true)
    .map(buku=>
-   ( <li style={{color: 'green'}} key={buku.datakey}>{buku.nama}  
+   ( <li style={{color: 'green'}} key={buku.id-1}>{buku.nama}  
        <button onClick={()=>this.lihatDetail(buku)}>Lihat Detail</button></li>))
   }
 
