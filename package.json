@@ -1,0 +1,19 @@
+{
+  "name": "node",
+  "version": "1.0.0",
+  "description": "belajar node js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev" : "nodemon index.js"
+  },
+  "keywords": [
+    "node"
+  ],
+  "author": "alam",
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "^2.0.6",
+    "uuid": "^8.3.2"
+  }
+}
